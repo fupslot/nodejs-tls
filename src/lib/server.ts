@@ -1,9 +1,9 @@
-import { readFileSync, existsSync } from "fs";
 import { EventEmitter } from "stream";
 import tls from "tls";
 import logger from "./logger";
 import { Peer } from "./peer";
 import { NewEnforcer } from "./enforcer";
+import lib from "./";
 
 type Await<T> = T extends PromiseLike<infer U> ? U : T;
 type Enforcer = Await<ReturnType<typeof NewEnforcer>>;
@@ -76,14 +76,6 @@ class Server extends EventEmitter {
   }
 }
 
-function readByteContent(filepath: string): Buffer {
-  if (!existsSync(filepath)) {
-    throw new Error(`file not found: ${filepath}`);
-  }
-
-  return readFileSync(filepath);
-}
-
 const NewServer = async (
   opts: ServerOptions,
   ln: Listener
@@ -94,12 +86,12 @@ const NewServer = async (
   };
 
   if (opts.CAFile != null) {
-    config.ca = readByteContent(opts.CAFile);
+    config.ca = lib.readByteContent(opts.CAFile);
   }
 
   if (opts.CertFile != null && opts.KeyFile != null) {
-    config.cert = readByteContent(opts.CertFile);
-    config.key = readByteContent(opts.KeyFile);
+    config.cert = lib.readByteContent(opts.CertFile);
+    config.key = lib.readByteContent(opts.KeyFile);
     config.requestCert = true;
   }
   const s = tls.createServer(config, (socket) => {

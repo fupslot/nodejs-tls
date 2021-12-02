@@ -13,6 +13,8 @@ function configFile(filename: string): string {
 const CAFile = configFile("ca.pem");
 const ServerCertFile = configFile("server.pem");
 const ServerKeyFile = configFile("server-key.pem");
+const ClientCertFile = configFile("client.pem");
+const ClientKeyFile = configFile("client-key.pem");
 const PolicyFile = configFile("policy.csv");
 const ModelFile = configFile("model.conf");
 
@@ -20,6 +22,8 @@ export default {
   CAFile,
   ServerCertFile,
   ServerKeyFile,
+  ClientCertFile,
+  ClientKeyFile,
   PolicyFile,
   ModelFile,
 };
