@@ -23,4 +23,8 @@ certs:
 		-profile=client \
 		test/client-csr.json | cfssljson -bare client
 
-	mv *.{pem,csr} /Users/eugene/.nodejs-tls
+	mv *.{pem,csr} $(CONFIG_DIR)
+
+.PHONY:acl 
+acl:
+	cp ./test/*.{conf,csv} $(CONFIG_DIR)
