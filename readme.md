@@ -11,7 +11,7 @@ make init
 make certs
 
 # start server
-yarn debug
+yarn serve
 ```
 
 You can use `openssl s_client` to test the connection
