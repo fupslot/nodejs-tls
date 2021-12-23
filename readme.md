@@ -9,12 +9,25 @@ make init
 
 # generate self-signed sertificates
 make certs
+```
 
-# start server
+### Start TCP/TLS Server
+
+```bash
+# start TLS server
 yarn serve
 ```
 
-You can use `openssl s_client` to test the connection
+### Connect to TCP/TLS Server using Agent
+
+```bash
+# connect to TLS server
+yarn connect
+```
+
+### Connect to TCP/TLS Server using OpenSSL `s_client`
+
+Use `openssl s_client` for quick testing the connection like so:
 
 ```bash
 openssl s_client -status \
@@ -23,6 +36,8 @@ openssl s_client -status \
     -key $HOME/.nodejs-tls/client-key.pem \
     -connect localhost:1111
 ```
+
+### Debug & Troubleshooting
 
 Checking that the server is listening on port `1111`
 

@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "serve": "node -r ts-node/register --inspect=0.0.0.0:9000 ./src/serve.ts",
-    "connect": "node -r ts-node/register --inspect=0.0.0.0:9010 ./src/connect.ts"
+    "debug-serve": "node -r ts-node/register --inspect=0.0.0.0:9000 ./src/cmd/cli.ts serve",
+    "debug-connect": "node -r ts-node/register --inspect=0.0.0.0:9010 ./src/cmd/cli.ts connect",
+    "cmd":"node -r ts-node/register ./src/cmd/cli.ts"
   },
   "devDependencies": {
     "@types/node": "^16.11.11",
+    "@types/yargs": "^17.0.8",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "eslint": "^7.32.0",
@@ -21,6 +23,7 @@
   },
   "dependencies": {
     "casbin": "^5.11.5",
-    "pino": "^7.5.1"
+    "pino": "^7.5.1",
+    "yargs": "^17.3.0"
   }
 }
